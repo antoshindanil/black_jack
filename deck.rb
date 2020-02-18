@@ -8,6 +8,8 @@ class Deck
   def initialize
     @cards = []
     @suits = %w[♠ ♥ ♣ ♦]
+    @pictures = %w[Валет Дама Король]
+
     generate
   end
 
@@ -16,30 +18,15 @@ class Deck
   # Генерация колоды
   def generate
     @suits.each do |suit|
-      generate_suit(suit)
-    end
-  end
+      @cards.push(Card.new(1, "Туз - #{suit}"))
 
+      (2..10).each do |value|
+        @cards.push(Card.new(value, "#{value} - #{suit}"))
+      end
 
-  # Генерация масти, не хотел делать внутренний цикл
-  def generate_suit(suit)
-    (1..13).each do |value|
-      @cards.push(Card.new(value, "#{generate_name(value)} - #{suit}"))
-    end
-  end
-
-  def generate_name(value)
-    case value
-    when 1
-      'Туз'
-    when 11
-      'Валет'
-    when 12
-      'Дама'
-    when 13
-      'Король'
-    else
-      value
+      @pictures.each do |picture|
+        @cards.push(Card.new(10, "#{picture} - #{suit}"))
+      end
     end
   end
 end
