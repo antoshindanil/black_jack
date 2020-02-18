@@ -11,6 +11,8 @@ class Deck
     generate
   end
 
+  private
+
   # Генерация колоды
   def generate
     @suits.each do |suit|
@@ -18,7 +20,6 @@ class Deck
     end
   end
 
-  private
 
   # Генерация масти, не хотел делать внутренний цикл
   def generate_suit(suit)
