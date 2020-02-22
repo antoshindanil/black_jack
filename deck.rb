@@ -9,30 +9,25 @@ class Deck
     @cards = []
     @suits = %w[♠ ♥ ♣ ♦]
     @pictures = %w[Валет Дама Король]
-    generate
-    mix_deck
+    reset_deck
   end
 
-  # Возвращает результат удаления карты с конца массива
   def take_card
     @cards.pop
   end
 
-  # Сбрасывает колоду
   def reset_deck
-    @cards = []
+    @cards.clear
     generate
     mix_deck
   end
 
-  private
-
-  # Мешает массив с картами
   def mix_deck
     @cards = @cards.shuffle
   end
 
-  # Генерация колоды
+  private
+
   def generate
     @suits.each do |suit|
       @cards.push(Card.new(1, "Туз - #{suit}"))
