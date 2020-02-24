@@ -5,9 +5,10 @@ require_relative 'card'
 class Deck
   attr_reader :current_card, :cards
 
+  SUITS = %w[♠ ♥ ♣ ♦]
+
   def initialize
     @cards = []
-    @suits = %w[♠ ♥ ♣ ♦]
     @pictures = %w[Валет Дама Король]
     reset_deck
   end
@@ -29,7 +30,7 @@ class Deck
   private
 
   def generate
-    @suits.each do |suit|
+    SUITS.each do |suit|
       @cards.push(Card.new(1, "Туз - #{suit}"))
 
       (2..10).each do |value|

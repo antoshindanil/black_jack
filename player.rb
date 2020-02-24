@@ -45,10 +45,6 @@ class Player
   private
 
   def ace_calculate
-    @points += if @points + 11 <= BLACK_JACK
-                 11
-               else
-                 1
-               end
+    @points += @points + 11 <= BLACK_JACK ? 11 : 1
   end
 end
